@@ -1,0 +1,33 @@
+.connected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chainPill {
+  padding: 0.25rem 0.75rem;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.dot.active  { background: var(--green); }
+.dot.pulsing { background: var(--green); animation: pulse 1s infinite; }
+
+.error { border-color: #FCA5A5; color: #B91C1C; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}

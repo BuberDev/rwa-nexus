@@ -22,7 +22,8 @@ export function TransferPanel({ asset, signer, onSuccess }: Props) {
 
   const isValidAddress = ethers.isAddress(recipient);
   const isValidAmount = Number(amount) > 0;
-  const canSubmit = isValidAddress && isValidAmount && txState === "idle";
+  const isIdle = txState === "idle";
+  const canSubmit = isValidAddress && isValidAmount && isIdle;
 
   async function handleTransfer(e: React.FormEvent) {
     e.preventDefault();
@@ -86,8 +87,8 @@ export function TransferPanel({ asset, signer, onSuccess }: Props) {
           />
         </label>
 
-        <button className="btn-primary" type="submit" disabled={!canSubmit || txState === "pending"}>
-          {txState === "pending" ? "Confirming…" : "Transfer"}
+        <button className="btn-primary" type="submit" disabled={!canSubmit || !isIdle}>
+          {!isIdle && txState === "pending" ? "Confirming…" : "Transfer"}
         </button>
       </form>
 

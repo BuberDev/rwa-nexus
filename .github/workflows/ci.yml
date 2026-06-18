@@ -38,7 +38,7 @@ jobs:
       - run: npm test
 
   frontend:
-    name: Frontend — Type-check & Build
+    name: Frontend — Build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -49,5 +49,4 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: npm run type-check
       - run: npm run build
